@@ -22,9 +22,7 @@ const asking = function () {
         screenPrice = +prompt('Сколько будет стоить данная работа?', 10);
     } while (!isNumber(screenPrice));
     adaptive = confirm('Нужен ли адаптив на сайте?');
-};
-
-asking();
+}();
 
 const getAllServicePrices = function () {
     let sum = 0;
@@ -47,10 +45,10 @@ function getFullPrice() {
     return screenPrice + allServicePrices;
 }
 
-rollback = Number('10');
-let percent = fullPrice * (rollback / 100);
+fullPrice = getFullPrice();
 
-console.log(fullPrice);
+rollback = 10;
+let percent = fullPrice * (rollback / 100);
 
 function getServicePercentPrices(price4, price5) {
     return Math.ceil(price4 - price5);
@@ -77,13 +75,12 @@ const getRollbackMessage = function () {
 
 const showTypeOf = function (variable) {
     console.log(variable, typeof variable);
+    return { var: variable, type: typeof variable };
 };
 
-showTypeOf(`Значение и тип переменной title: ${getTitle(title)}`);
-showTypeOf(`Значение и тип переменной adaptive: ${adaptive}`);
-showTypeOf(`Значение и тип переменной rollback: ${rollback}`);
-showTypeOf(`Значение и тип переменной percent: ${percent}`);
-
+console.log('Значение и тип переменной title: ', showTypeOf(title));
+console.log('Значение и тип переменной rollback: ', showTypeOf(rollback));
+console.log('Значение и тип переменной adaptive: ', showTypeOf(adaptive));
 console.log(`Вывод строки с типами экранов для разработки: ${Array.from([screens])}`);
 console.log(`Cообщение о скидке пользователю: ${getRollbackMessage()}`);
 console.log(`Cтоимость за вычетом процента отката посреднику: ${servicePercentPrice}`);
