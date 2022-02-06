@@ -28,22 +28,10 @@ let appData = {
             } else if (i === 1) {
                 appData.servicePrice2 = prompt('Какой дополнительный тип услуги нужен?', 'Дополнительный');
             }
-            //do {
-            // price = prompt('Сколько это будет стоить?', 10).trim();
-            //} while (!appData.isNumber(sum));
-            // sum += +price;
-            // }
-            // return sum;
-            price = prompt("Сколько это будет стоить?");
-            price = Number(price);
-
-            if (appData.isNumber(price)) {
-                sum += price;
-            } else {
-                price = prompt("Сколько это будет стоить?");
-                price = Number(price);
-                sum += price;
-            }
+            do {
+                price = +prompt('Сколько это будет стоить?', 10).trim(); // все ок 10
+            } while (!appData.isNumber(price));
+            sum += price;
         }
         return sum;
     },
@@ -88,8 +76,8 @@ let appData = {
 
 };
 appData.start();
-console.log(appData.screenPrice);
-console.log(appData.allServicePrices);
+console.log(appData.getAllServicePrices());
+
 
 
 
