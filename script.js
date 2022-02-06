@@ -15,7 +15,7 @@ let appData = {
         appData.title = prompt('Как называется ваш проект?', 'Проект');
         appData.screens = prompt('Какие типы экранов нужно разработать? \(Простые, Сложные, Интерактивные\)', 'Простые');
         do {
-            appData.screenPrice = +prompt('Сколько будет стоить данная работа?', 10);
+            appData.screenPrice = +prompt('Сколько будет стоить данная работа?', 10).trim();
         } while (!appData.isNumber(appData.screenPrice));
         appData.adaptive = confirm('Нужен ли адаптив на сайте?');
     },
@@ -28,10 +28,22 @@ let appData = {
             } else if (i === 1) {
                 appData.servicePrice2 = prompt('Какой дополнительный тип услуги нужен?', 'Дополнительный');
             }
-            do {
-                price = prompt('Сколько это будет стоить?', 10);
-            } while (!appData.isNumber(sum));
-            sum += +price;
+            //do {
+            // price = prompt('Сколько это будет стоить?', 10).trim();
+            //} while (!appData.isNumber(sum));
+            // sum += +price;
+            // }
+            // return sum;
+            price = prompt("Сколько это будет стоить?");
+            price = Number(price);
+
+            if (appData.isNumber(price)) {
+                sum += price;
+            } else {
+                price = prompt("Сколько это будет стоить?");
+                price = Number(price);
+                sum += price;
+            }
         }
         return sum;
     },
@@ -61,12 +73,8 @@ let appData = {
     },
     logger: function () {
         for (let key in appData) {
-            console.log(appData[key]);
+            console.log(key);
         }
-
-        //console.log(appData.getFullPrice());
-        //console.log(appData.getServicePercentPrices());
-
     },
     start: function () {
         appData.asking();
@@ -79,7 +87,9 @@ let appData = {
     }
 
 };
-
 appData.start();
+console.log(appData.screenPrice);
+console.log(appData.allServicePrices);
+
 
 
