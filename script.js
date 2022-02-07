@@ -3,8 +3,6 @@ let appData = {
     screens: '',
     screenPrice: 0,
     adaptive: true,
-    service1: '',
-    service2: '',
     servicePrice1: 0,
     servicePrice2: 0,
     allServicePrices: 0,
@@ -13,7 +11,8 @@ let appData = {
     rollback: 10,
     asking: function () {
         appData.title = prompt('Как называется ваш проект?', 'Проект');
-        appData.screens = prompt('Какие типы экранов нужно разработать? \(Простые, Сложные, Интерактивные\)', 'Простые');
+        appData.screens = prompt('Какие типы экранов нужно разработать? \(Простые, Сложные, Интерактивные\)',
+            'Простые');
         do {
             appData.screenPrice = +prompt('Сколько будет стоить данная работа?', 10).trim();
         } while (!appData.isNumber(appData.screenPrice));
@@ -29,7 +28,7 @@ let appData = {
                 appData.servicePrice2 = prompt('Какой дополнительный тип услуги нужен?', 'Дополнительный');
             }
             do {
-                price = +prompt('Сколько это будет стоить?', 10).trim(); // все ок 10
+                price = +prompt('Сколько это будет стоить?', 10).trim();
             } while (!appData.isNumber(price));
             sum += price;
         }
@@ -43,7 +42,7 @@ let appData = {
     },
     getTitle: function (a) {
         a = a.trim();
-        return a[0].toUpperCase() + a.slice(1).toLowerCase();
+        appData.title = a[0].toUpperCase() + a.slice(1).toLowerCase();
     },
     getRollbackMessage: function () {
         if (appData.fullPrice >= 300) {
@@ -61,7 +60,7 @@ let appData = {
     },
     logger: function () {
         for (let key in appData) {
-            console.log(key);
+            console.log(key, appData[key]);
         }
     },
     start: function () {
@@ -76,7 +75,6 @@ let appData = {
 
 };
 appData.start();
-console.log(appData.getAllServicePrices());
 
 
 
