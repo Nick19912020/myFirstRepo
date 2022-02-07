@@ -1,6 +1,8 @@
 let appData = {
     title: '',
     screens: [],
+    typeScreen: '',
+    subServices: '',
     screenPrice: 0,
     adaptive: true,
     servicePrice1: 0,
@@ -11,25 +13,25 @@ let appData = {
     rollback: 10,
     services: {},
     asking: function () {
-        appData.title = prompt('Как называется ваш проект?', 'Проект');
-        //appData.screens = prompt('Какие типы экранов нужно разработать? \(Простые, Сложные, Интерактивные\)',
-        //    'Простые');
-        //do {
-        //    appData.screenPrice = prompt('Сколько будет стоить данная работа?', 10);
-        //} while (!appData.isNumber(appData.screenPrice));
-
+        do {
+            appData.title = prompt('Как называется ваш проект?', 'Проект');
+        } while (appData.isNumber(appData.title));
         for (let i = 0; i < 1; i++) {
-            let name = prompt('Какие типы экранов нужно разработать? \(Простые, Сложные, Интерактивные\)');
+            do {
+                appData.typeScreen = prompt('Какие типы экранов нужно разработать? \(Простые, Сложные, Интерактивные\)');
+            } while (appData.isNumber(appData.typeScreen));
             let price = 0;
             do {
                 price = prompt('Сколько это будет стоить?', 10);
             } while (!appData.isNumber(price));
 
-            appData.screens.push({ id: i, name: name, price: price });
+            appData.screens.push({ id: i, name: appData.typeScree, price: price });
         }
         appData.adaptive = confirm('Нужен ли адаптив на сайте?');
         for (let i = 0; i < 2; i++) {
-            let name = prompt('Какой дополнительный тип услуги нужен?', 'Дополнительный');
+            do {
+                appData.subServices = prompt('Какой дополнительный тип услуги нужен?', 'Дополнительный');
+            } while (appData.isNumber(appData.subServices));
             let price = 0;
             do {
                 price = prompt('Сколько это будет стоить?', 10);
@@ -69,6 +71,9 @@ let appData = {
     isNumber: function (num) {
         return !isNaN(parseFloat(num)) && isFinite(num) && num != " ";
     },
+    //isString: function (num) {
+    //    return !isNaN(parseFloat(num)) && isFinite(num) && num != " ";
+    //},
     logger: function () {
         for (let key in appData) {
             console.log(key, appData[key]);
