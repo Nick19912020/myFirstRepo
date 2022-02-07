@@ -14,7 +14,7 @@ let appData = {
         appData.screens = prompt('Какие типы экранов нужно разработать? \(Простые, Сложные, Интерактивные\)',
             'Простые');
         do {
-            appData.screenPrice = +prompt('Сколько будет стоить данная работа?', 10).trim();
+            appData.screenPrice = prompt('Сколько будет стоить данная работа?', 10);
         } while (!appData.isNumber(appData.screenPrice));
         appData.adaptive = confirm('Нужен ли адаптив на сайте?');
     },
@@ -28,7 +28,7 @@ let appData = {
                 appData.servicePrice2 = prompt('Какой дополнительный тип услуги нужен?', 'Дополнительный');
             }
             do {
-                price = +prompt('Сколько это будет стоить?', 10).trim();
+                price = prompt('Сколько это будет стоить?', 10);
             } while (!appData.isNumber(price));
             sum += price;
         }
@@ -56,7 +56,7 @@ let appData = {
         }
     },
     isNumber: function (num) {
-        return !isNaN(parseFloat(num)) && isFinite(num);
+        return !isNaN(parseFloat(num)) && isFinite(num) && num != " ";
     },
     logger: function () {
         for (let key in appData) {
