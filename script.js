@@ -15,11 +15,11 @@ let appData = {
     asking: function () {
         do {
             appData.title = prompt('Как называется ваш проект?', 'Проект');
-        } while (appData.isNumber(appData.title));
+        } while (appData.isNumber(appData.title) || appData.title == "");
         for (let i = 0; i < 1; i++) {
             do {
                 appData.typeScreen = prompt('Какие типы экранов нужно разработать? \(Простые, Сложные, Интерактивные\)');
-            } while (appData.isNumber(appData.typeScreen));
+            } while (appData.isNumber(appData.typeScreen) || appData.typeScreen == "");
             let price = 0;
             do {
                 price = prompt('Сколько это будет стоить?', 10);
@@ -31,7 +31,7 @@ let appData = {
         for (let i = 0; i < 2; i++) {
             do {
                 appData.subServices = prompt('Какой дополнительный тип услуги нужен?', 'Дополнительный');
-            } while (appData.isNumber(appData.subServices));
+            } while (appData.isNumber(appData.subServices) || appData.subServices == "");
             let price = 0;
             do {
                 price = prompt('Сколько это будет стоить?', 10);
@@ -71,9 +71,6 @@ let appData = {
     isNumber: function (num) {
         return !isNaN(parseFloat(num)) && isFinite(num) && num != " ";
     },
-    //isString: function (num) {
-    //    return !isNaN(parseFloat(num)) && isFinite(num) && num != " ";
-    //},
     logger: function () {
         for (let key in appData) {
             console.log(key, appData[key]);
