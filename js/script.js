@@ -1,3 +1,15 @@
+'use script';
+
+const titlePage = document.getElementsByTagName('h1')[0];
+const buttons = document.getElementsByClassName('handler_btn');
+const addBtn = document.querySelector('.screen-btn');
+const percent = document.querySelectorAll('.other-items.percent');
+const number = document.querySelectorAll('.other-items.number');
+const rollback = document.querySelector('.rollback input[type = "range"]');
+const rangValue = document.querySelector('.rollback span.range-value');
+const inputs = Array.from(document.getElementsByClassName('total-input'));
+let screen = document.querySelectorAll('.screen');
+
 let appData = {
     title: '',
     screens: [],
@@ -18,7 +30,8 @@ let appData = {
         } while (appData.isNumber(appData.title) || appData.title == "");
         for (let i = 0; i < 1; i++) {
             do {
-                appData.typeScreen = prompt('Какие типы экранов нужно разработать? \(Простые, Сложные, Интерактивные\)');
+                appData.typeScreen =
+                    prompt('Какие типы экранов нужно разработать? \(Простые, Сложные, Интерактивные\)');
             } while (appData.isNumber(appData.typeScreen) || appData.typeScreen == "");
             let price = 0;
             do {
@@ -88,6 +101,16 @@ let appData = {
 
 };
 appData.start();
+
+console.log(titlePage);
+console.log(buttons);
+console.log(addBtn);
+console.log(percent);
+console.log(number);
+console.log(rollback);
+console.log(rangValue);
+console.log(inputs);
+console.log(screen);
 
 
 
